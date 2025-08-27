@@ -9,7 +9,7 @@ def get_inventory_data():
             "vars": {                          #group vars that apply to all hosts in this group
                 "ansible_host": "192.168.1.9",
                 "ansible_user": "ayush",
-                "ansible_ssh_pass": "Ayush9496@"
+                #"ansible_ssh_pass": ""
             }
         },
         "azure": {
@@ -17,7 +17,7 @@ def get_inventory_data():
             "vars": {
                 "ansible_host": "172.171.236.12",
                 "ansible_user": "ayush",
-                "ansible_ssh_pass": "marvel754396@"
+                #"ansible_ssh_pass": ""
             }
         },
         "demo": {
