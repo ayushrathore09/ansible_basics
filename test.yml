@@ -1,0 +1,19 @@
+---
+- name: creating a normal play
+  hosts: demo
+  gather_facts: false
+  vars:
+    #name: "astha"
+  tasks:
+    # - name: create a hello world
+    #   shell: 'echo "hello, {{ name }}"'
+    #   ignore_errors: true
+    #   register: output
+  
+    - debug: 
+        msg: 
+          - "{{ hostvars['test2'].name }}"
+          - "{{ inventory_hostname }}"
+
+  # hostvars, invemtory_hostname is magic variables.
+         

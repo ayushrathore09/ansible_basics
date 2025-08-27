@@ -1,0 +1,17 @@
+## lineinfile module
+--- 
+- name: use this module
+  hosts: local
+  gather_facts: false
+  tasks:
+    - lineinfile:
+        path: /tmp/test.txt
+        line: 'hey ayush, welcome!!'
+        state: present
+        insertbefore: BOF
+
+    - lineinfile:
+        path: /tmp/test.txt
+        regexp: "^hey bro,"
+        line: 'how are you?'
+            

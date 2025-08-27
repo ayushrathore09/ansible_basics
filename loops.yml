@@ -1,0 +1,16 @@
+---
+- name: Create a loop yaml file
+  hosts: demo
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Create a user
+      user:
+        name: "{{ item.name }}" 
+        #uid: "{{ item.uid }}"
+        state: present
+      with_items:
+         - name: astha
+           #uid:  1001 
+         - name: prachi
+           #uid: 1002  

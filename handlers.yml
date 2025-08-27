@@ -1,0 +1,27 @@
+---
+- name: Create a handler
+  hosts: azure
+  gather_facts: false
+  become: yes
+  tasks: 
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+  
+    - name: start the service 
+      service:
+        name: nginx
+        state: started
+      register: res2
+      changed_when: res2.state == 'started'  
+      notify: restart the nginx
+
+      
+  handlers:
+    - name: restart the nginx
+      service:
+        name: nginx
+        state: restarted
+
+                      

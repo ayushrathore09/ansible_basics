@@ -1,0 +1,17 @@
+---
+- name: checking ansible vault 
+  hosts: demo
+  gather_facts: false
+  vars_files:
+    - secret.yml
+  tasks:
+    - name: create a file with sensitive info
+      copy: 
+        content: "hi ayush, this is password: {{ password }}"
+        dest: /home/ayush/sensitive.txt
+
+## ansible-vault create secret.yml  (create,view,rekey,edit, encrypt, decrypt)
+## to run playbook with this >> --ask-vault-pass
+## to run playbook with this >> --vault-password-file (after creating vault password file in working dir: echo "password" > ~/.vault_pass.txt).
+## export ANSIBLE_VAULT_PASSWORD_FILE (valid only for current terminal session).
+## vault_password_file = ~/.vault_pass.txt > /etc/ansible/ansible.cfg.

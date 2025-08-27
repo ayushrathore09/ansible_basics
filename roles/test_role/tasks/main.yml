@@ -1,0 +1,15 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for test_role
+
+- name: Stop the nginx package
+  service: 
+    name: "{{ name }}"  # mention in defaults
+    state: stopped
+
+- name: remove the service
+  apt: 
+    name: "{{ name }}"
+    state: absent  
+    purge: yes           # to remove config file
+    autoremove: yes      # remove depedencies only for nginx

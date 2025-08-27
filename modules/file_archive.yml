@@ -1,0 +1,18 @@
+## files: Archive module
+---
+- name: create a archive of file
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - name: archive
+      archive:
+        path: 
+          - '/tmp/test.txt'
+        dest: /tmp/test.tar.gz
+        format: gz
+
+    - name: unarchive a file
+      unarchive: 
+        src: /tmp/test.tar.gz
+        dest: '/tmp' 
+        remote_src: yes 

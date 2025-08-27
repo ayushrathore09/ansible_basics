@@ -1,0 +1,26 @@
+## read_csv module
+---
+- name: read csv module useage
+  hosts: localhost
+  gather_facts: false
+  tasks: 
+    - read_csv:
+        path: /tmp/host.csv 
+      register: res
+      changed_when: res.list != []
+
+    - debug:
+        var: res.list
+
+    - name: ping server
+      #shell: ping -c 3 {{ item.ip_address }}
+      ping:
+      register: res1
+      delegate_to: "{{ item.ip_address }}"
+      loop: "{{ res.list }}"
+      ignore_errors: yes
+
+    - debug:
+        var: res1
+
+        

@@ -1,0 +1,17 @@
+## copy module;
+--- 
+- name: copy the file
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - name: copy a file
+      copy:
+        src: /tmp/test.txt
+        dest: /home/ayush/test.txt
+
+
+    - name: copy content to target
+      copy:
+        content: 'hi ayush'
+        dest: /home/ayush/test.txt   
+      

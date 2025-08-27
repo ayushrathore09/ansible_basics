@@ -1,0 +1,7 @@
+---
+- name: Call the role to remove the nginx service
+  hosts: azure
+  become: yes
+  gather_facts: false
+  roles:
+    - test_role

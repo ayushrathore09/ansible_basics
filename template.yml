@@ -1,0 +1,18 @@
+## template is a blueprint which creates the dynamic config file on target machines.
+## it consists placeholders which contains the variables.
+
+---
+- name: create a template
+  hosts: demo
+  gather_facts: true
+  become: true
+  tasks: 
+    # - name: copy the template to target
+    #   template: 
+    #     src: index.html.j2
+    #     dest: /var/www/html/index.nginx-debian.html
+
+    - name: copy the template to target
+      template: 
+        src: test_jinja.j2
+        dest: /tmp/config_file.txt    

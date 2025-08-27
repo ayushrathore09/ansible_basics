@@ -1,0 +1,20 @@
+## file module:
+--- 
+- name: manage the file
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - name: change ownership of file
+      file: 
+        path: /home/ayush/test.txt
+        owner: ayush
+        group: ayush
+        mode: 0777
+
+    - file:
+        path: /home/ayush/test1.txt
+        state: absent
+
+    - file: 
+        path: /home/ayush/test
+        state: absent

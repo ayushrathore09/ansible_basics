@@ -1,0 +1,42 @@
+---
+- name: find a file in directory if absent create it
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - name: find a file
+      find: 
+        path: /home/ayush/
+        pattern: test.txt
+        recurse: yes
+      register: result
+      changed_when: result.matched > 0
+      
+    - find:
+        path: /home/ayush/test
+        file_type: directory
+        recurse: no
+      register: res    
+
+    - debug:
+        var: res   
+      
+    # - name: find a file
+    #   find: 
+    #     paths: /tmp/
+    #     pattern: "test.txt"
+    #     recurse: yes
+    #   register: results
+    #   changed_when: results.matched > 0
+    
+    # - debug:
+    #     var: results
+
+    # - name: create a file
+    #   file:
+    #     path: "/tmp/abc.txt"
+    #     state: touch
+    #   when: results.matched == 0
+    #   register: result_touch
+     
+    # - debug:
+    #     var: result_touch   

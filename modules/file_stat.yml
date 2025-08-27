@@ -1,0 +1,22 @@
+## stat module:
+---
+- name: check the file stat
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - stat:
+        path: /home/ayush/test.txt
+      register: res
+
+    - debug:
+        msg: "{{ res }}"
+      when: res.stat.exists       
+
+    - stat: 
+        path: /home/ayush/test
+      register: res1
+
+    - file:
+        path: /home/ayush/test
+        state: directory
+      when: res1.stat.exists != true          

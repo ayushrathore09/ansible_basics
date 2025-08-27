@@ -1,0 +1,13 @@
+## fetch module:
+---
+- name: use a fetch module
+  hosts: demo
+  gather_facts: false
+  tasks:
+    - name: use module
+      fetch: 
+        src: /home/ayush/abc.txt
+        dest: /home/ayush/
+        flat: yes
+        
+        

@@ -1,0 +1,18 @@
+---
+- name: Check gather_facts
+  hosts: demo
+  gather_facts: yes
+  tasks:
+    - name: Check the output of gather facts
+      debug:
+        var: ansible_facts
+
+    - name: Store the output in text file
+      copy:
+        content: |
+          "{{ ansible_facts['os_family'] }}" 
+          "{{ ansible_facts['distribution'] }}"
+          "{{ ansible_facts['hostname'] }}"
+        dest:  "/tmp/test.txt"
+      
+        
